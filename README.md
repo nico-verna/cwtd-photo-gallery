@@ -6,9 +6,11 @@ Title screen
 Start button
 Top secret button (2.0)
 Get to know us button (2.0)
+Two arrow buttons (3.0)
+Another return button (3.0)
+Slide regarding the club president (3.0)
 Doomsday button (2.0)
 6 pictures of club activity 
 
 Version 2.0 created the expansion into the top secret area, with more to come soon.
-Current ideas for expansion:
-Informational Branch (Why our club is good)
+Version 3.0 created the expansion into the Get to know us area, which displays the club president and a few questions about him. More club officers to debut soon!

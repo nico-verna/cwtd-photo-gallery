@@ -96,6 +96,7 @@ while not start_gallery:
                     start_gallery = True
                     break
 
+
         manager.process_events(event)
 
     manager.update(time_delta)
@@ -240,6 +241,79 @@ def doomsday():
     # Return to the slideshow
     start_gallery = True
 
+def know():
+        # Clear the screen
+        screen.fill((0, 0, 0))
+
+        # Kill the existing buttons
+        top_secret_button.kill()
+        know_button.kill()
+
+        # Create the "RETURN" button
+        global return_button
+        return_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((WIDTH - 160, 10), (150, 50)),
+                                                     text='RETURN',
+                                                     manager=manager)
+
+        # Load images from the "Slides" folder
+        slide_dir = "Slides"
+        slide_images = []
+        for filename in os.listdir(slide_dir):
+            if filename.endswith('.jpg') or filename.endswith('.png'):
+                img = pygame.image.load(os.path.join(slide_dir, filename))
+                img = pygame.transform.scale(img, (WIDTH, HEIGHT))
+                slide_images.append(img)
+
+        # Create arrow buttons
+        arrow_left_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((10, HEIGHT // 2 - 25), (35, 35)),
+                                                         text='<',
+                                                         manager=manager)
+        arrow_right_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((WIDTH - 60, HEIGHT // 2 - 25), (35, 35)),
+                                                          text='>',
+                                                          manager=manager)
+
+        # Display the first slide
+        slide_index = 0
+        screen.blit(slide_images[slide_index], (0, 0))
+
+        # Loop until the user clicks the "RETURN" button
+        while True:
+            time_delta = clock.tick(60)/1000.0
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.USEREVENT:
+                    if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
+                        if event.ui_element == return_button:
+                            # Kill the arrow buttons and "RETURN" button
+                            arrow_left_button.kill()
+                            arrow_right_button.kill()
+                            return_button.kill()
+
+                            # Draw the main buttons
+                            draw_main()
+
+                            # Return to the slideshow
+                            return
+
+                        elif event.ui_element == arrow_left_button:
+                            # Decrement the slide index
+                            slide_index = (slide_index - 1) % len(slide_images)
+                            screen.blit(slide_images[slide_index], (0, 0))
+
+                        elif event.ui_element == arrow_right_button:
+                            # Increment the slide index
+                            slide_index = (slide_index + 1) % len(slide_images)
+                            screen.blit(slide_images[slide_index], (0, 0))
+
+                manager.process_events(event)
+
+            manager.update(time_delta)
+            manager.draw_ui(screen)
+
+            pygame.display.flip()
+
 # Confirm both buttons are drawn
 draw_main()
 
@@ -262,7 +336,7 @@ while True:
                 if event.ui_element == top_secret_button:
                     doomsday()
                 elif event.ui_element == know_button:
-                    pass
+                    know()
 
         manager.process_events(event)
 
