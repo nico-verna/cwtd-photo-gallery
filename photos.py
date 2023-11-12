@@ -9,7 +9,7 @@ pygame.init()
 
 # Set up some constants
 WIDTH, HEIGHT = 800, 480  # Adjust to your screen's resolution
-IMAGE_DIR = r"C:\Users\nicho\Documents\Coding\Python\Digital Photo Gallery\Photos"  # Replace with your images directory
+IMAGE_DIR = "Digital Photo Gallery\Photos"  # Replace with your images directory
 
 # Set up the display
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
