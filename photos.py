@@ -68,7 +68,7 @@ images = []
 for filename in os.listdir(IMAGE_DIR):
     if filename.endswith('.jpg') or filename.endswith('.png'):
         img = pygame.image.load(os.path.join(IMAGE_DIR, filename))
-        img = pygame.transform.scale(img, (WIDTH, HEIGHT))
+        img = pygame.transform.smoothscale(img, (WIDTH, HEIGHT))
         images.append(img)
 
 # Create a clock object
@@ -259,16 +259,16 @@ def know():
         slide_dir = "Slides"
         slide_images = []
         for filename in os.listdir(slide_dir):
-            if filename.endswith('.jpg') or filename.endswith('.png'):
+            if filename.endswith('.jpg') or filename.endswith('.png') or filename.endswith('.tif'):
                 img = pygame.image.load(os.path.join(slide_dir, filename))
-                img = pygame.transform.scale(img, (WIDTH, HEIGHT))
+                img = pygame.transform.smoothscale(img, (WIDTH, HEIGHT))
                 slide_images.append(img)
 
         # Create arrow buttons
-        arrow_left_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((10, HEIGHT // 2 - 25), (35, 35)),
+        arrow_left_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((10, HEIGHT // 2 - 25), (35, 25)),
                                                          text='<',
                                                          manager=manager)
-        arrow_right_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((WIDTH - 60, HEIGHT // 2 - 25), (35, 35)),
+        arrow_right_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((WIDTH - 60, HEIGHT // 2 - 25), (35, 25)),
                                                           text='>',
                                                           manager=manager)
 
