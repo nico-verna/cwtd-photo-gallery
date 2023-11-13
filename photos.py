@@ -13,7 +13,7 @@ WIDTH, HEIGHT = 800, 480  # Adjust to your screen's resolution
 IMAGE_DIR = "Photos"  # Replace with your images directory
 
 # Set up the display
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.NOFRAME)
 
 # Create a UIManager for pygame_gui
 manager = pygame_gui.UIManager((WIDTH, HEIGHT))
