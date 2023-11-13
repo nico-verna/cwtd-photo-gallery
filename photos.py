@@ -66,7 +66,7 @@ def show_title_screen():
 # Load images
 images = []
 for filename in os.listdir(IMAGE_DIR):
-    if filename.endswith('.jpg') or filename.endswith('.png'):
+    if filename.endswith('.bmp') or filename.endswith('.png'):
         img = pygame.image.load(os.path.join(IMAGE_DIR, filename))
         img = pygame.transform.smoothscale(img, (WIDTH, HEIGHT))
         images.append(img)
@@ -259,7 +259,7 @@ def know():
         slide_dir = "Slides"
         slide_images = []
         for filename in os.listdir(slide_dir):
-            if filename.endswith('.jpg') or filename.endswith('.png') or filename.endswith('.tif'):
+            if filename.endswith('.bmp') or filename.endswith('.png') or filename.endswith('.tif'):
                 img = pygame.image.load(os.path.join(slide_dir, filename))
                 img = pygame.transform.smoothscale(img, (WIDTH, HEIGHT))
                 slide_images.append(img)
